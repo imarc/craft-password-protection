@@ -1,0 +1,49 @@
+{
+    "name": "imarc/password-protection",
+    "description": "Password protect any page on the CMS.",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "password protection"
+    ],
+    "support": {
+        "docs": "???",
+        "issues": "???"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Imarc",
+            "homepage": "imarc.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0"
+    },
+    "require-dev": {
+      "craftcms/cms": "^3.2.0",
+      "codeception/codeception": "^3.0",
+      "vlucas/phpdotenv": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "imarc\\passwordprotection\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Password Protection",
+        "handle": "password-protection",
+        "developer": "Imarc",
+        "developerUrl": "imarc.com",
+        "documentationUrl": "???",
+        "changelogUrl": "???",
+        "components": {
+            "passwordProtectionService": "imarc\\passwordprotection\\services\\PasswordProtectionService"
+        },
+        "class": "imarc\\passwordprotection\\PasswordProtection"
+    }
+}

@@ -1,0 +1,20 @@
+{% extends '_layouts/base' %}
+{% import '_includes/forms' as forms %}
+
+{% set title = 'Password Protection - Settings'|t('password-protection') %}
+
+{% block body %}
+    <h1>{{ 'Settings'|t('password-protection') }}</h1>
+    {{ forms.textField({
+        label: 'Default Password'|t('password-protection'),
+        instructions: 'This password will auto-fill for all new protected pages.'|t('password-protection'),
+        id: 'defaultPassword',
+        name: 'defaultPassword',
+        value: settings.defaultPassword,
+        errors: settings.getErrors('defaultPassword')
+    }) }}
+
+    <input type="hidden" name="action" value="plugins/save-plugin-settings">
+    <input type="hidden" name="pluginHandle" value="password-protection">
+
+{% endblock %}

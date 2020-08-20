@@ -1,0 +1,30 @@
+{% extends '_layouts/base' %}
+{% import '_includes/forms' as forms %}
+
+{% set title = 'Protect'|t('password-protection') %}
+
+{% do view.registerAssetBundle("\\imarc\\passwordprotection\\assetbundles\\passwordprotection\\PasswordProtectionAsset") %}
+
+{% block body %}
+    <form class="imarc-protect-form" action="" method="POST">
+        <h1>{{ 'Enter Passphrase'|t('password-protection') }}</h1>
+        <p class="note">{{ "This page is password protected. If you've been provided with a password for this page please enter it below. Please note passwords might be different depending on the page you are trying to access."|t('password-protection') }}</p>
+
+        <div>
+            {{ csrfInput() }}
+
+            {% set message = craft.app.session.getFlash('protect_error') %}
+            {% if message|length > 0 %}
+                <div class="alert">
+                    <p class="error">{{ message }}</p>
+                </div>
+            {% endif %}
+
+            <div class="field">
+                <input type="password" class="text fullwidth {{ message|length > 0 ? 'error' : '' }}" name="protect_password">
+            </div>
+
+            <input type="submit" value="{{ 'Submit'|t('password-protection') }}" class="btn submit">
+        </div>
+    </form>
+{% endblock %}

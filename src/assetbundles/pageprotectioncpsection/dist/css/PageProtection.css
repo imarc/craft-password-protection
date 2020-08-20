@@ -1,0 +1,22 @@
+/**
+ * Password Protection plugin for Craft CMS
+ *
+ * PageProtection Field CSS
+ *
+ * @author    Imarc
+ * @copyright Copyright (c) 2020 Imarc
+ * @link      imarc.com
+ * @package   PasswordProtection
+ * @since     1.0.0
+ */
+
+ #imarc-password-field > .input > input.text {
+    padding: 4px 9px;
+    border-radius: 3px;
+    border: 1px solid rgba(96, 125, 159, 0.25);
+    background-color: #fbfcfe;
+    -webkit-box-shadow: inset 0 1px 4px -1px rgba(96, 125, 159, 0.25);
+    box-shadow: inset 0 1px 4px -1px rgba(96, 125, 159, 0.25);
+    background-clip: padding-box;
+    margin: 0 0 0 0!important;
+ }
