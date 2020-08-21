@@ -2,7 +2,7 @@
 
 Password protect any page on the CMS.
 
-![Screenshot](resources/img/plugin-logo.png)
+![Screenshot](resources/img/icon-mask.svg)
 
 ## Requirements
 

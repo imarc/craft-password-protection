@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2020 Imarc
  */
 
-namespace imarc\passwordprotection\assetbundles\pageprotectioncpsection;
+namespace Imarc\Craft\PasswordProtection\AssetBundles;
 
 use Craft;
 use craft\web\AssetBundle;
@@ -43,7 +43,7 @@ class PageProtectionCPSectionAsset extends AssetBundle
     public function init()
     {
         // define the path that your publishable resources live
-        $this->sourcePath = "@imarc/passwordprotection/assetbundles/pageprotectioncpsection/dist/";
+        $this->sourcePath = "@Imarc/Craft/PasswordProtection/assetbundles/resources/dist/";
 
         // define the dependencies
         $this->depends = [

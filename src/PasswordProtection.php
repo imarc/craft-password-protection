@@ -8,15 +8,13 @@
  * @copyright Copyright (c) 2020 Imarc
  */
 
-namespace imarc\passwordprotection;
+namespace Imarc\Craft\PasswordProtection;
 
-use imarc\passwordprotection\services\PasswordProtectionService as PasswordProtectionService;
-use imarc\passwordprotection\variables\PasswordProtectionVariable;
-use imarc\passwordprotection\models\Settings;
-use imarc\passwordprotection\utilities\PasswordProtectionUtility as PasswordProtectionUtilityUtility;
-use imarc\passwordprotection\SetPassword;
-use imarc\passwordprotection\records\PasswordProtectionRecord;
-use imarc\passwordprotection\assetbundles\passwordprotection\PasswordProtectionAsset;
+use Imarc\Craft\PasswordProtection\Services\PasswordProtectionService as PasswordProtectionService;
+use Imarc\Craft\PasswordProtection\Variables\PasswordProtectionVariable;
+use Imarc\Craft\PasswordProtection\Models\Settings;
+use Imarc\Craft\PasswordProtection\Records\PasswordProtectionRecord;
+use Imarc\Craft\PasswordProtection\AssetBundles\PasswordProtectionAsset;
 
 use Craft;
 use craft\base\Plugin;

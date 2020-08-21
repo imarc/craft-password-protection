@@ -8,11 +8,10 @@
  * @copyright Copyright (c) 2020 Imarc
  */
 
-namespace imarc\passwordprotection\services;
+namespace Imarc\Craft\PasswordProtection\Services;
 
-use imarc\passwordprotection\PasswordProtection;
-use imarc\passwordprotection\records\PasswordProtectionRecord;
-use imarc\passwordprotection\models\PasswordProtectionModel;
+use Imarc\Craft\PasswordProtection\PasswordProtection;
+use Imarc\Craft\PasswordProtection\Records\PasswordProtectionRecord;
 
 use Craft;
 use craft\base\Component;
@@ -54,7 +53,11 @@ class PasswordProtectionService extends Component
             'password' => $password
         ];
         
-        //Create/update the record
+        //Turn off password protection if password is empty
+        if (empty($password)) {
+            $data['passwordProtectionEnabled'] = false;
+        }
+
         PasswordProtectionRecord::updateRecord($data, PasswordProtectionRecord::findByEntryId($entryId));
     }
 }

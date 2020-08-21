@@ -8,9 +8,7 @@
  * @copyright Copyright (c) 2020 Imarc
  */
 
-namespace imarc\passwordprotection\records;
-
-use imarc\passwordprotection\PasswordProtection;
+namespace Imarc\Craft\PasswordProtection\Records;
 
 use Craft;
 use craft\db\ActiveRecord;

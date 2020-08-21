@@ -1,5 +1,5 @@
 {
-    "name": "imarc/password-protection",
+    "name": "imarc/craft-password-protection",
     "description": "Password protect any page on the CMS.",
     "type": "craft-plugin",
     "version": "1.0.0",
@@ -11,14 +11,14 @@
         "password protection"
     ],
     "support": {
-        "docs": "???",
-        "issues": "???"
+        "docs": "https://github.com/imarc/craft-password-protection",
+        "issues": "https://github.com/imarc/craft-password-protection/issues"
     },
-    "license": "MIT",
+    "license": "proprietary",
     "authors": [
         {
             "name": "Imarc",
-            "homepage": "imarc.com"
+            "homepage": "https://www.imarc.com/"
         }
     ],
     "require": {
@@ -31,19 +31,19 @@
     },
     "autoload": {
         "psr-4": {
-          "imarc\\passwordprotection\\": "src/"
+          "Imarc\\Craft\\PasswordProtection\\": "src/"
         }
     },
     "extra": {
         "name": "Password Protection",
         "handle": "password-protection",
         "developer": "Imarc",
-        "developerUrl": "imarc.com",
-        "documentationUrl": "???",
-        "changelogUrl": "???",
+        "developerUrl": "https://www.imarc.com/",
+        "documentationUrl": "https://github.com/imarc/craft-password-protection",
+        "changelogUrl": "https://github.com/imarc/craft-password-protection/releases",
         "components": {
-            "passwordProtectionService": "imarc\\passwordprotection\\services\\PasswordProtectionService"
+            "passwordProtectionService": "Imarc\\PasswordProtection\\Services\\PasswordProtectionService"
         },
-        "class": "imarc\\passwordprotection\\PasswordProtection"
+        "class": "Imarc\\Craft\\PasswordProtection\\PasswordProtection"
     }
 }
