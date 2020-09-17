@@ -7,11 +7,29 @@
     <h1>{{ 'Settings'|t('password-protection') }}</h1>
     {{ forms.textField({
         label: 'Default Password'|t('password-protection'),
-        instructions: 'This password will auto-fill for all new protected pages.'|t('password-protection'),
+        instructions: 'This password will auto-fill for all new protected pages. Leave this field blank if you do not want a default password.'|t('password-protection'),
         id: 'defaultPassword',
         name: 'defaultPassword',
         value: settings.defaultPassword,
         errors: settings.getErrors('defaultPassword')
+    }) }}
+
+    {{ forms.textField({
+        label: 'Password Cookie Duration'|t('password-protection'),
+        instructions: 'This defines the length for which a password cookie will be valid. After expiration users will have to re-enter the password for a password protected page. (Please enter the number in seconds i.e. 86400 == 1 Day)'|t('password-protection'),
+        id: 'passwordCookieDuration',
+        name: 'passwordCookieDuration',
+        value: settings.passwordCookieDuration,
+        errors: settings.getErrors('passwordCookieDuration')
+    }) }}
+
+    {{ forms.textField({
+        label: 'Custom Template'|t('password-protection'),
+        instructions: 'Specify a custom template for the password page. Leave empty for the standard login template.'|t('password-protection'),
+        id: 'template',
+        name: 'template',
+        value: settings.template,
+        errors: settings.getErrors('template')
     }) }}
 
     <input type="hidden" name="action" value="plugins/save-plugin-settings">

@@ -127,7 +127,7 @@ class PasswordProtection extends Plugin
                 if (!isset($event->variables['entry'])) {
                     return;
                 }
-                
+
                 $entryId = $event->variables['entry']->id;
                 $passwordProtect = PasswordProtectionRecord::findByEntryId($entryId);
                 //If password protection not enabled just return
@@ -153,13 +153,19 @@ class PasswordProtection extends Plugin
                     exit;
                 }
 
-                
                 if (!$this->isAuthorized($url, $passwordProtect->password)) {
                     $response = Craft::$app->getResponse();
                     $response->setStatusCode(403);
-                    $view->registerAssetBundle(PasswordProtectionAsset::class);
-                    $view->setTemplateMode($view::TEMPLATE_MODE_CP);
-                    $response->data = $view->renderPageTemplate('password-protection/protect.twig');
+
+                    $templatePath = $this->getSettings()->getTemplate();
+                    if ($templatePath) {
+                        $response->data = $view->renderPageTemplate($templatePath);
+                    } else {
+                        $view->registerAssetBundle(PasswordProtectionAsset::class);
+                        $view->setTemplateMode($view::TEMPLATE_MODE_CP);
+                        $response->data = $view->renderPageTemplate('password-protection/protect.twig');
+                    }
+
                     $response->send();
                     exit;
                 }
@@ -305,7 +311,7 @@ class PasswordProtection extends Plugin
             'name' => $this->makeCookieName($url),
             'httpOnly' => true,
             'value' => $this->makeCookieValue($password),
-            'expire' => time() + 86400,
+            'expire' => time() + $this->getSettings()->getPasswordCookieDuration(),
         ]);
 
         // Set cookie.

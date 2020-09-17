@@ -37,7 +37,9 @@ class Settings extends Model
      *
      * @var string
      */
-    public $defaultPassword = 'rand0mPassword';
+    public $defaultPassword = NULL;
+    public $passwordCookieDuration = 86400;
+    public $template = NULL;
 
     // Public Methods
     // =========================================================================
@@ -56,11 +58,24 @@ class Settings extends Model
     {
         return [
             ['defaultPassword', 'string'],
-            ['defaultPassword', 'default', 'value' => 'rand0mPassword'],
+            ['defaultPassword', 'default', 'value' => NULL],
+            ['passwordCookieDuration', 'integer'],
+            ['passwordCookieDuration', 'required'],
+            ['passwordCookieDuration', 'default', 'value' => 86400],
+            ['template', 'string'],
+            ['template', 'default', 'value' => NULL],
         ];
     }
 
     public function getDefaultPassword() {
         return $this->defaultPassword;
+    }
+
+    public function getPasswordCookieDuration() {
+        return $this->passwordCookieDuration;
+    }
+
+    public function getTemplate() {
+        return $this->template;
     }
 }

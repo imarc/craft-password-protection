@@ -10,9 +10,10 @@
 
 namespace Imarc\Craft\PasswordProtection\Variables;
 
+use Imarc\Craft\PasswordProtection\PasswordProtection;
 use Imarc\Craft\PasswordProtection\Records\PasswordProtectionRecord;
 
-use Craft;
+use craft\helpers\DateTimeHelper;
 
 /**
  * Password Protection Variable
@@ -49,8 +50,20 @@ class PasswordProtectionVariable
     {
         if ($entry) {
             return PasswordProtectionRecord::findByEntryId($entry->getId());
-        } 
+        }
 
         return $entry;
+    }
+
+    /**
+     * Get the Password Cookie Duration and format it for human readability.
+     *
+     * @return void
+     */
+    public function getFormatedCookieDuration()
+    {
+        $settings = PasswordProtection::$plugin->getSettings();
+
+        return DateTimeHelper::secondsToHumanTimeDuration($settings->getPasswordCookieDuration());
     }
 }

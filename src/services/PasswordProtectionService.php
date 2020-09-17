@@ -47,16 +47,18 @@ class PasswordProtectionService extends Component
         $passwordProtectionEnabled = empty($params['imarc_passwordProtectionEnabled']) ? false : true;
         $password = $params['imarc_password'] ?? '';
 
+        //Turn off password protection if password is empty
+        if (empty($password) && empty($settings->getDefaultPassword())) {
+            $passwordProtectionEnabled = false;
+        } else if (empty($password)) {
+            $password = $settings->getDefaultPassword();
+        }
+
         $data = [
             'entryId' => $entryId,
             'passwordProtectionEnabled' => $passwordProtectionEnabled,
             'password' => $password
         ];
-        
-        //Turn off password protection if password is empty
-        if (empty($password)) {
-            $data['passwordProtectionEnabled'] = false;
-        }
 
         PasswordProtectionRecord::updateRecord($data, PasswordProtectionRecord::findByEntryId($entryId));
     }
