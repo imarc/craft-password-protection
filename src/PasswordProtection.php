@@ -260,7 +260,13 @@ class PasswordProtection extends Plugin
         }
 
         $view = Craft::$app->getView();
-        $view->hook('cp.entries.edit.settings', [$this, 'renderEditSourceLink']);
+
+        // render the options in the entry settings sidebar if possible,
+        // otherwise render at the end of the content.
+        $isLaterThan329 = version_compare(Craft::$app->version, "3.2.9", ">=");
+        $hookHandle = $isLaterThan329 ? "cp.entries.edit.settings" : "cp.entries.edit.content";
+        
+        $view->hook($hookHandle, [$this, 'renderEditSourceLink']);
     }
 
     /**
