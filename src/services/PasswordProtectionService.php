@@ -16,6 +16,7 @@ use Imarc\Craft\PasswordProtection\Records\PasswordProtectionRecord;
 use Craft;
 use craft\base\Component;
 use Exception;
+use \yii\base\UserException;
 
 /**
  * PasswordProtectionService Service
@@ -37,13 +38,22 @@ class PasswordProtectionService extends Component
 
     /**
      * This function will handle the saving of passwordEnable and the password.
+     * 
+     * @param array $params - password settings to be saved
+     * @param mixed $entryId - the id of the entry to save the password
+     * information against
      *
      * @return mixed
      */
-    public function updateEntryField($params) {
+    public function updateEntryField($params, $entryId = null) {
         $settings = PasswordProtection::$plugin->getSettings();
 
-        $entryId = $params['entryId'] ?? null;
+        $entryId = $entryId ?? $params['entryId'] ?? null;
+
+        if ($entryId === null) {
+            throw new UserException("Couldn't save password on entry, as entryId is null");
+        }
+
         $passwordProtectionEnabled = empty($params['imarc_passwordProtectionEnabled']) ? false : true;
         $password = $params['imarc_password'] ?? '';
 
