@@ -191,17 +191,21 @@ class PasswordProtection extends Plugin
 			Elements::EVENT_AFTER_SAVE_ELEMENT,
 			function ($event) {
 
-                try {
+                if (Craft::$app->request->isCpRequest) {
 
-                    $element = $event->element;
+                    try {
 
-                    if (is_a($element, "craft\\elements\\Entry")) {
-                        $entryId = $event->element->id;
-                        (new PasswordProtectionService())->updateEntryField(Craft::$app->request->getBodyParams(), $entryId);
+                        $element = $event->element;
+
+                        if (is_a($element, "craft\\elements\\Entry")) {
+                            $entryId = $event->element->id;
+                            (new PasswordProtectionService())->updateEntryField(Craft::$app->request->getBodyParams(), $entryId);
+                        }
+
+                    } catch (\Throwable $th) {
+                        throw $th;
                     }
 
-                } catch (\Throwable $th) {
-                    throw $th;
                 }
 
 			}
