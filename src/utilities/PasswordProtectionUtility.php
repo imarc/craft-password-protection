@@ -8,9 +8,7 @@
  * @copyright Copyright (c) 2020 Imarc
  */
 
-namespace Imarc\Craft\PasswordProtection\Utilities;
-
-use Imarc\Craft\PasswordProtection\AssetBundles\PasswordProtectionUtilityAsset;
+namespace Imarc\Craft\PasswordProtection\utilities;
 
 use Craft;
 use craft\base\Utility;

@@ -8,10 +8,10 @@
  * @copyright Copyright (c) 2020 Imarc
  */
 
-namespace Imarc\Craft\PasswordProtection\Variables;
+namespace Imarc\Craft\PasswordProtection\variables;
 
 use Imarc\Craft\PasswordProtection\PasswordProtection;
-use Imarc\Craft\PasswordProtection\Records\PasswordProtectionRecord;
+use Imarc\Craft\PasswordProtection\records\PasswordProtectionRecord;
 
 use craft\helpers\DateTimeHelper;
 

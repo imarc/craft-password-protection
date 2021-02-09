@@ -8,10 +8,10 @@
  * @copyright Copyright (c) 2020 Imarc
  */
 
-namespace Imarc\Craft\PasswordProtection\Services;
+namespace Imarc\Craft\PasswordProtection\services;
 
 use Imarc\Craft\PasswordProtection\PasswordProtection;
-use Imarc\Craft\PasswordProtection\Records\PasswordProtectionRecord;
+use Imarc\Craft\PasswordProtection\records\PasswordProtectionRecord;
 
 use Craft;
 use craft\base\Component;

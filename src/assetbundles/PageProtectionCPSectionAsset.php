@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2020 Imarc
  */
 
-namespace Imarc\Craft\PasswordProtection\AssetBundles;
+namespace Imarc\Craft\PasswordProtection\assetbundles;
 
 use Craft;
 use craft\web\AssetBundle;

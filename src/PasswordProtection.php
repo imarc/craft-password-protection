@@ -10,11 +10,11 @@
 
 namespace Imarc\Craft\PasswordProtection;
 
-use Imarc\Craft\PasswordProtection\Services\PasswordProtectionService as PasswordProtectionService;
-use Imarc\Craft\PasswordProtection\Variables\PasswordProtectionVariable;
-use Imarc\Craft\PasswordProtection\Models\Settings;
-use Imarc\Craft\PasswordProtection\Records\PasswordProtectionRecord;
-use Imarc\Craft\PasswordProtection\AssetBundles\PasswordProtectionAsset;
+use Imarc\Craft\PasswordProtection\services\PasswordProtectionService as PasswordProtectionService;
+use Imarc\Craft\PasswordProtection\variables\PasswordProtectionVariable;
+use Imarc\Craft\PasswordProtection\models\Settings;
+use Imarc\Craft\PasswordProtection\records\PasswordProtectionRecord;
+use Imarc\Craft\PasswordProtection\assetbundles\PasswordProtectionAsset;
 
 use Craft;
 use craft\base\Plugin;

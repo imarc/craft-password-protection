@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2020 Imarc
  */
 
-namespace Imarc\Craft\PasswordProtection\Models;
+namespace Imarc\Craft\PasswordProtection\models;
 
 use Craft;
 use craft\base\Model;

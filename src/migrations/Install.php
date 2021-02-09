@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2020 Imarc
  */
 
-namespace Imarc\Craft\PasswordProtection\Migrations;
+namespace Imarc\Craft\PasswordProtection\migrations;
 
 use Craft;
 use craft\config\DbConfig;
