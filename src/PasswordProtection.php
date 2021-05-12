@@ -32,7 +32,10 @@ use craft\elements\Entry;
 use craft\events\RegisterElementActionsEvent;
 use craft\events\RegisterTemplateRootsEvent;
 
+use craft\services\Elements;
+
 use yii\base\Event;
+use yii\base\UserException;
 
 /**
  * Craft plugins are very much like little applications in and of themselves. We’ve made
@@ -181,6 +184,33 @@ class PasswordProtection extends Plugin
         //     }
         // );
 
+        // after an element has been saved, if it was an entry, update any
+        // password information required on the entry.
+        Event::on(
+			Elements::class,
+			Elements::EVENT_AFTER_SAVE_ELEMENT,
+			function ($event) {
+
+                if (Craft::$app->request->isCpRequest) {
+
+                    try {
+
+                        $element = $event->element;
+
+                        if (is_a($element, "craft\\elements\\Entry")) {
+                            $entryId = $event->element->id;
+                            (new PasswordProtectionService())->updateEntryField(Craft::$app->request->getBodyParams(), $entryId);
+                        }
+
+                    } catch (\Throwable $th) {
+                        throw $th;
+                    }
+
+                }
+
+			}
+		);
+
         // Register our variables
         Event::on(
             CraftVariable::class,
@@ -250,15 +280,6 @@ class PasswordProtection extends Plugin
      */
     protected function executeLogic()
     {
-        $request = Craft::$app->getRequest();
-
-        //Saving the entry password
-        if ($request->isCpRequest && $request->isActionRequest && in_array('entries', $request->getActionSegments())
-        && in_array('save-entry', $request->getActionSegments())) {
-            $service = new PasswordProtectionService();
-            $service->updateEntryField($request->getBodyParams());
-        }
-
         $view = Craft::$app->getView();
         $view->hook('cp.entries.edit.settings', [$this, 'renderEditSourceLink']);
     }
