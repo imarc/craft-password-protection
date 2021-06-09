@@ -43,7 +43,7 @@ class PasswordProtectionService extends Component
     public function updateEntryField($params) {
         $settings = PasswordProtection::$plugin->getSettings();
 
-        $entryId = $params['entryId'] ?? null;
+        $entryId = $params['entryId'] ?? $params['sourceId'] ?? null;
         $passwordProtectionEnabled = empty($params['imarc_passwordProtectionEnabled']) ? false : true;
         $password = $params['imarc_password'] ?? '';
 
