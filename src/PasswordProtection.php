@@ -253,8 +253,12 @@ class PasswordProtection extends Plugin
         $request = Craft::$app->getRequest();
 
         //Saving the entry password
-        if ($request->isCpRequest && $request->isActionRequest && in_array('entries', $request->getActionSegments())
-        && in_array('save-entry', $request->getActionSegments())) {
+        if (
+            $request->isCpRequest &&
+            $request->isActionRequest &&
+            ((in_array('entries', $request->getActionSegments()) && in_array('save-entry', $request->getActionSegments())) ||
+            (in_array('entry-revisions', $request->getActionSegments()) && in_array('publish-draft', $request->getActionSegments())) )
+        ) {
             $service = new PasswordProtectionService();
             $service->updateEntryField($request->getBodyParams());
         }
